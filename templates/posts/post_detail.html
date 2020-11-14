@@ -1,0 +1,7 @@
+<h1>{{ post.title }}</h1>
+<h5>- por {{ post.autor }}</h5>
+<p><i>{{ post.picture }}</i></p>
+<p><i>{{ post.body }}</i></p>
+<p>
+    <a href="{% url "posts:list" %}">Regresar</a>
+</p>

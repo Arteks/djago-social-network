@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hola {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Desconectarse</a></p>
+  <p><a href="{% url 'password_reset' %}">Solicitar nueva contraseña</a></p>
+  <p><a href="{% url 'posts:list' %}">Comenzar a socializar</a></p>
+
+  
+{% else %}
+  <p>No se detecta una sesión activa, por favor decida:</p>
+  <a href="{% url 'login' %}">Ingresar al sistema</a> o
+  <a href="{% url 'signup' %}">Registrarse en el sistema</a>
+{% endif %}
+{% endblock %}

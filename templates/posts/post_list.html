@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+{% if user.is_authenticated %}
+  Hola {{ user.username }}!
+  <p><a href="{% url 'logout' %}">Desconectarse</a></p>
+  <p><a href="{% url 'password_reset' %}">Solicitar nueva contraseña</a></p>
+
+  <h1>Publicaciones</h1>
+
+  <p>
+      <a href="{% url "posts:new" %}">¡Postear!</a>
+  </p>
+  
+  <ul>
+      {% for post in object_list %}
+          <li>
+              <p>{{ post.title }}</p>
+              <p>
+                  <a href="{% url "posts:detail" post.id %}">Ver más...</a> | 
+                  <a href="{% url "posts:edit" post.id %}">Editar</a> | 
+                  <a href="{% url "posts:delete" post.id %}">Borrar</a> 
+              </p>
+          </li>
+      {% endfor %}
+  </ul>
+{% else %}
+  <p>No se detecta una sesión activa, por favor decida:</p>
+  <a href="{% url 'login' %}">Ingresar al sistema</a> o
+  <a href="{% url 'signup' %}">Registrarse en el sistema</a>
+{% endif %}
+{% endblock %}

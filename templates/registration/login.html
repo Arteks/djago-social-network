@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}Login{% endblock %}
+
+{% block content %}
+<h2>Iniciar sesión</h2>
+<div class="form-group">
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn btn-info">Ingresar</button>
+</form>
+<p>¿No recuerdas tu contraseña?, puedes solicitar una nueva desde el siguiente enlace:</p>
+<p><a href="{% url 'password_reset' %}">Solicitar nueva contraseña</a></p>
+</div>
+{% endblock %}
