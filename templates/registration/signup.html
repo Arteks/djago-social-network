@@ -9,6 +9,8 @@
     {% csrf_token %}
     {{ form.as_p }}
     <button type="submit" class="btn btn-info">Registrarme</button>
+    <p>¿Ya tienes cuenta?, puedes inciar sesión con el siguiente enlace:</p>
+    <p><a href="{% url 'password_reset' %}">Iniciar sesión</a></p>
   </form>
 </div>
 {% endblock %}

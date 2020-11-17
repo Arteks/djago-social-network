@@ -8,14 +8,12 @@
 <body>
 
   {% if user.is_authenticated %}
-  navbar de logueado
     {% if user.is_superuser %}
-    hola admin
+    Bienvenido {{user.username}} -> Tienes acceso al <a href="127.0.0.1:8000/admin">Admin panel</a>
     {% else %}
-    hola usuario comun
+    Bienvenido {{user.username}}.
     {% endif %}
   {% else %}
-  Por favor inicie sesión.
   {% endif %}
 
   <main>
